@@ -36,8 +36,22 @@ retrieved chunks
 context
 ↓
 RAG prompt
+↓
+LLM API (DeepSeek)
+↓
+AI Answer
 ```
+# 最终效果展示
+```
+Question:
+What model uses attention?
 
+Retrieved Context:
+Transformers use attention mechanism.
+
+AI Answer:
+Based on the known information provided,the model that uses the attention mechanismis the Transformer.
+```
 ---
 
 # 学到的核心概念
@@ -119,6 +133,37 @@ retrieval + generation
 ```
 形成完整 RAG 流程。
 
+## 6. Retrieval 和 Generation 是两个阶段
+RAG 并不是大模型本身，而是：retrieval + generation两个阶段共同完成问答。
+
+其中：
+Retrieval 负责查找相关知识
+Generation 负责组织语言生成回答
+
+## 7. Embedding Model 和 LLM 是不同模型
+项目中：
+Embedding Model：all-MiniLM-L6-v2
+
+负责：文本 → 向量
+
+用于：
+* semantic search
+* retrieval
+* vector database
+* LLM
+
+DeepSeek Chat
+
+负责：
+
+文本 → 回答
+
+用于：
+
+* reasoning
+* generation
+* QA
+
 ---
 # 重要数据形态（shape）
 
@@ -148,6 +193,31 @@ chunk_embeddings.shape:(5,384)
 5个chunk
 每个chunk一个384维向量
 ```
+# RAG 的本质是：
+
+给大模型外挂知识库，而不是重新训练大模型。
+
+流程：
+
+外部知识
+↓
+retrieval
+↓
+context
+↓
+prompt
+↓
+LLM
+↓
+answer
+
+# 技术栈
+- Python
+- NumPy
+- sentence-transformers
+- FAISS
+- OpenAI SDK
+- DeepSeek API
 
 ---
 # 学到的数据流意识
