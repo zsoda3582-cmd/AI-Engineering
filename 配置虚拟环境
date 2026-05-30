@@ -1,0 +1,29 @@
+以后做项目我建议统一：
+
+项目名
+│
+├── .venv
+├── data
+├── main.py
+├── requirements.txt
+└── README.md
+
+第一步：创建项目
+paper-rag/
+
+第二步：创建虚拟环境（Powershell）
+python -m venv .venv
+
+第三步：在cursor terminal激活
+.venv\Scripts\activate
+如果成功，会变成：(.venv) PS D:\code\ai-engineering\paper-rag>
+看到(.venv)就说明进入了本项目专属Python环境
+
+第四步：安装依赖（Powershell）
+pip install pypdf
+pip install sentence-transformers
+pip install faiss-cpu
+
+第五步：导出依赖（Powershell）
+项目完成后：pip freeze > requirements.txt
+即可生成：requirements.txt
