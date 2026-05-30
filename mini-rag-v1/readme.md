@@ -259,3 +259,60 @@ context string
 * [x] context construction
 * [x] RAG prompt construction
 
+## v2 更新内容
+
+在 v1 基础上，进一步实现：
+
+- knowledge.txt 外部知识库加载
+- 固定长度 Chunk 切分
+- Overlap Chunk（重叠切分）
+- 用户动态提问
+- while True 多轮问答
+- DeepSeek API 接入
+- 完整 RAG 闭环
+
+流程：
+
+Document
+↓
+Chunk
+↓
+Embedding
+↓
+FAISS
+↓
+Retrieval
+↓
+Context
+↓
+Prompt
+↓
+DeepSeek
+↓
+Answer
+
+## 项目收获
+
+进一步理解：
+
+- Chunk 为什么存在
+- Overlap 的作用
+- Embedding Model 和 LLM 的区别
+- Retrieval 和 Generation 的区别
+- RAG 不等于大模型
+- 知识库负责提供事实
+- LLM 负责组织语言生成答案
+
+RAG 的本质：
+
+外部知识
+↓
+Retrieval
+↓
+Context
+↓
+Prompt
+↓
+LLM
+↓
+Answer
